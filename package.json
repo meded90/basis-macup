@@ -1,0 +1,28 @@
+{
+  "name": "diydream-markup",
+  "version": "0.0.1",
+  "description": "Probrigada project markup",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "0.4.1",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-coffee": "*",
+    "grunt-contrib-sass": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-connect": "*",
+    "grunt-cleanx": "*"
+  },
+  "devDependencies": {
+    "grunt-bake": "~0.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@bitbucket.org/_kix/diydream.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
