@@ -16,7 +16,7 @@ module.exports = (grunt) ->
           style: "expanded"
           trace: true
         files:
-          "css/style.css": "sass/style.scss"
+          "css/style.css": "sass/style.sass"
 
     coffee:
       compile:
@@ -30,42 +30,37 @@ module.exports = (grunt) ->
           keepalive: true
           port: 4000
           hostname: '*'
-    bake:
-      build:
-        files:
-          "page/main.html": "app/main.html"
-
 
     watch:
-      files: [ "app/*" ],
-      options:
-        nospawn: true,
-      task:  'bake:build'
+      jade:
+        files: [ "app/**/*" ],
+        options:
+          nospawn: true,
+        tasks: ["jade:debug"]
+      sass:
+        files: [ "/**/*.sass", "/**/*.scss" ],
+        options:
+          nospawn: true,
+        tasks: ["sass:dev"]
 
-#  grunt.event.on "watch", (action, filepath, target) ->
-#    grunt.log.writeln  "a#{filepath}"
-#    s = {}
-#    s['dfa'+filepath] = filepath
-#    grunt.config.set('alert',{files:{"page/main.html": "app/main.html"}})
-#    grunt.config.set('bake.changed',{files:{"page/main.html": "app/main.html"}})
-#    a = grunt.config()
-##    fnShowProps   a.bake.changed.files , "bake"
-#    grunt.task.run(["comaled"])
-#    fnShowProps grunt.task , "run"
 
+    jade:
+      debug:
+        files:
+          'page/': ['app/*.jade']
+        options:
+          compileDebug: true
+          client: false
 
   # These plugins provide necessary tasks.
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-sass"
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-connect"
-  grunt.loadNpmTasks "grunt-bake"
-
+  grunt.loadNpmTasks('grunt-jade');
 
   # Default task.
   grunt.registerTask "default", ["watch"]
+  grunt.registerTask "jadew", ["watch:jade"]
+  grunt.registerTask "sassw", ["watch:sass"]
   grunt.registerTask "run", ["connect:server"] # не выпиливай очень нужная веш
-#  grunt.event.on "watch", (action, filepath) ->
-#    grunt.config.set "bake:name:src", filepath
-#    grunt.task.run(["bake:name"])
-#    fnShowProps grunt.config.bake , 'bake'

@@ -10,10 +10,8 @@
     "grunt-contrib-sass": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-connect": "*",
-    "grunt-cleanx": "*"
-  },
-  "devDependencies": {
-    "grunt-bake": "~0.1.0"
+    "grunt-cleanx": "*",
+    "grunt-jade": "*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
